@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MOODY GROUP | معرض السيارات</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background: #f4f7fc;
+            color: #172b4d;
+        }
+
+        header {
+            background: #ffffff;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 15px #0000000d;
+        }
+
+        .logo {
+            color: #1264db;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #344563;
+            margin-right: 20px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #1264db;
+        }
+
+      .hero {
+    min-height: 560px;
+    padding: 90px 8%;
+    display: flex;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(4, 18, 43, 0.85),
+            rgba(4, 18, 43, 0.2)
+        ),
+        url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2000&q=85")
+        center / cover no-repeat;
+
+    color: white;
+}
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.9;
+            margin-bottom: 28px;
+            color: #e0eaff;
+        }
+
+        .button {
+            display: inline-block;
+            background: white;
+            color: #1264db;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .button:hover {
+            background: #e5efff;
+        }
+
+        .cars-section {
+            padding: 65px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .section-description {
+            text-align: center;
+            color: #6b778c;
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+
+        .search-box input,
+        .search-box select {
+            padding: 13px;
+            border: 1px solid #dce3ef;
+            border-radius: 8px;
+            background: white;
+            font-size: 15px;
+            min-width: 200px;
+        }
+
+        .search-button {
+            background: #1264db;
+            color: white;
+            border: none;
+            padding: 13px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .cars-container {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .car-card {
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px #1831530c;
+            transition: transform 0.25s;
+        }
+
+        .car-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .car-card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .car-info {
+            padding: 20px;
+        }
+
+        .car-info h3 {
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+
+        .car-details {
+            color: #6b778c;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            color: #1264db;
+            font-size: 23px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .contact-button {
+            display: block;
+            text-align: center;
+            background: #1264db;
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .contact-button:hover {
+            background: #084ba9;
+        }
+
+        .no-results {
+            display: none;
+            text-align: center;
+            color: #6b778c;
+            padding: 30px;
+            grid-column: 1 / -1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 15px;
+            background: #092c67;
+            color: white;
+            line-height: 2;
+        }
+
+        @media (max-width: 900px) {
+            .cars-container {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            header {
+                padding: 18px 5%;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .cars-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 60px 6%;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .cars-section {
+                padding: 45px 6%;
+            }
+
+            nav a {
+                margin: 0 0 0 12px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">MOODY GROUP 🚘</div>
+
+        <nav>
+            <a href="#home">الرئيسية</a>
+            <a href="#cars">السيارات</a>
+            <a href="#contact">تواصل معنا</a>
+        </nav>
+    </header>
+
+    <section class="hero hero-live" id="home">
+    <div class="hero-content">
+        <span class="hero-label">MOODY GROUP</span>
+
+        <h1>
+            مش مجرد عربية..<br>
+            دي بداية حكاية جديدة
+        </h1>
+
+        <p>
+            اكتشف مجموعتنا من السيارات المميزة
+            واختار العربية اللي تناسب أسلوب حياتك.
+        </p>
+
+        <a href="#cars" class="button">
+            اكتشف سياراتنا ←
+        </a>
+    </div>
+</section>
+
+    <section class="cars-section" id="cars">
+        <h2 class="section-title">سياراتنا المميزة</h2>
+
+        <p class="section-description">
+            اختار عربيتك من مجموعتنا المتنوعة
+        </p>
+
+        <div class="search-box">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="ابحث عن ماركة أو موديل..."
+            >
+
+            <select id="brandFilter">
+                <option value="BMW">BMW</option>
+<option value="كيا">كيا</option>
+<option value="نيسان">نيسان</option>
+<option value="أودي">أودي</option>
+                <option value="">كل الماركات</option>
+                <option value="هيونداي">هيونداي</option>
+                <option value="تويوتا">تويوتا</option>
+                <option value="مرسيدس">مرسيدس</option>
+            </select>
+
+            <button class="search-button" onclick="searchCars()">
+                بحث
+            </button>
+        </div>
+
+        <div class="cars-container" id="carsContainer">
+
+            <article class="car-card" data-brand="هيونداي">
+<img src="https://www.contactcars.com/ar/new-cars/hyundai-elantra_cn7/612e07d265342a2f0f80cdfd" alt="سيارة هيونداي إلنترا" onerror="this.src='https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80'">
+
+                <div class="car-info">
+                <div class="car-info">
+                    <h3> الشيفروليه كمارو</h3>
+                </div>
+
+                    <p class="car-details">
+                    المحرك الأساسي المكون من 4 أسطوانات توربو، والاعتماد بالكامل على خيارات محركات أقوى (V6 و V8) مع توفير فئات كوبيه وكشف (قابل للتعديل) موديل 2024
+                    </p>
+
+                    <p class="price">4,900,000 جنيه</p>
+
+                    <a
+                        class="contact-button"
+                        href="#contact"
+                    >
+                        استفسر عن السيارة
+                    </a>
+                </div>
+            </article>
+
+            <article class="car-card" data-brand="تويوتا">
+                <img
+                    src="https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=800&q=80"
+                    alt="سيارة تويوتا"
+                >
+
+                <div class="car-info">
+                    <h3>تويوتا كامري 2023</h3>
+
+                    <p class="car-details">
+                       1. محرك 4 أسطوانات (سعة 2.5 لتر - القياسي):
+	• القوة: ينتج بين 178 إلى 204 حصان (حسب الضبط الإقليمي).
+	• عزم الدوران: حوالي 231 إلى 243 نيوتن متر.
+	• ناقل الحركة: أوتوماتيكي من 6 أو 8 سرعات.
+	• معدل استهلاك الوقود: اقتصادي جداً بمعدل 6.7 لتر لكل 100 كم.
+                    </p>
+
+                    <p class="price">4,200,000 جنيه</p>
+
+                    <a
+                        class="contact-button"
+                        href="#contact"
+                    >
+                        استفسر عن السيارة
+                    </a>
+                </div>
+            </article>
+        
+            <!-- BMW -->
+<article class="car-card" data-brand="BMW">
+    <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80" alt="BMW">
+
+    <div class="car-info">
+        <h3>BMW الفئة الثالثة</h3>
+        <p class="car-details" 
+    ></p> فئة BMW 320i 
+	• محرك 4 أسطوانات، سعة 1.6 لتر تيربو (أو 2.0 لتر في بعض الأسواق)، يولد قوة 170 حصاناً وعزم دوران 250 نيوتن/متر.
+	• ناقل حركة أوتوماتيكي ZF من 8 سرعات ودفع خلفي.
+	• التسارع من 0 إلى 100 كم/س في 8.1 ثانية</p>
+        <p class="price">3,650,000 جنيه</p>
+        <a class="contact-button" href="#contact">استفسر عن السيارة</a>
+    </div>
+</article>
+
+<!-- Mercedes -->
+<article class="car-card" data-brand="مرسيدس">
+    <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80" alt="Mercedes">
+
+    <div class="car-info">
+        <h3>مرسيدس C-Class</h3>
+        <p class="car-details"•></p> المحرك: 4 سلندر، سعة 1.5 لتر (1500 سي سي) تيربو.
+• القومة الإجمالية: 170 حصان (ينتج المحرك الأساسي 156 حصان بالإضافة إلى 14 حصان إضافي يوفرها المولد الكهربائي الذكي بنظام الـ Mild Hybrid بجهد 48 فولت).
+• عزم الدوران: 250 نيوتن متر.
+• ناقل الحركة: أوتوماتيك 9 سرعات (9G-TRONIC).
+• التسارع: من 0 إلى 100 كم/ساعة في 8.6 ثانية.
+• السرعة القصوى: 231 كم/ساعة.
+• متوسط استهلاك الوقود: اقتصادي جداً بمعدل 6.2 إلى 6.5 لتر لكل 100 كم</p>
+        <p class="price">3,580,000 جنيه</p>
+        <a class="contact-button" href="#contact">استفسر عن السيارة</a>
+    </div>
+</article>
+
+<!-- Kia -->
+<article class="car-card" data-brand="كيا">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/2023_Kia_Sportage_(NQ5)_in_White,_front_left.jpg" 
+     alt="Kia Sportage 2023" 
+     width="100%">>
+
+    <div class="car-info">
+        <h3>كيا سبورتاج</h3>
+        </p>  المحرك: سعة 1.6 لتر تيربو (4 سلندر).
+• القوة القصوى: 180 حصاناً.
+• عزم الدوران: 265 نيوتن.متر.
+• ناقل الحركة: أوتوماتيكي مزدوج القابض (DCT) بـ 7 سرعات.
+• نظام الجر/الدفع: أمامي أو رباعي حسب الفئة.
+• سعة خزان الوقود: 54 لتراً </p>
+        <p class="price">2,200,000 جنيه</p>
+        <a class="contact-button" href="#contact">استفسر عن السيارة</a>
+    </div>
+</article>
+
+<!-- Nissan -->
+<article class="car-card" data-brand="امبورجيني هوراكان">
+    <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&q=80" alt="Nissan">
+
+    <div class="car-info">
+        <h3>امبورجيني هوراكان</h3>
+        <p class="car-details"></p> المحرك: بنزين سعة 5.2 لتر مكون من 10 أسطوانات (V10).
+• قوة الحصان: تتراوح بين 470 إلى 640 حصان (حسب الفئة، وتصل في أغلب النسخ الرياضية إلى 600 - 640 حصان).
+• عزم الدوران: من 540 إلى 656 نيوتن متر.
+• ناقل الحركة: أوتوماتيك.
+• التسارع (من 0 إلى 100 كم/س): من 2.9 إلى 3.5 ثوانٍ.
+• السرعة القصوى: تصل إلى حوالي 325 كم/ساعة</p>
+        <p class="price">22,000,000 جنيه</p>
+        <a class="contact-button" href="#contact">استفسر عن السيارة</a>
+    </div>
+</article>
+
+<!-- Audi -->
+<article class="car-card" data-brand="أودي">
+    <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=800&q=80" alt="Audi">
+
+    <div class="car-info">
+        <h3>أودي A4</h3>
+        <p class="car-details"•></p> المحرك الأعلى (فئة 40 TFSI): سعة 2.0 لتر تيربو، يولد قوة 190 إلى 204 حصانًا وعزم دوران 320 نيوتن متر.
+• ناقل الحركة: أوتوماتيكي من نوع S Tronic ذو 7 سرعات مزدوج القابض (Dual-Clutch).
+• منظومة الدفع: تأتي قياسيًا بدفع أمامي للعجلات، مع توفر نظام Quattro (الدفع الرباعي المستمر) الشهير من أودي في الفئات الأعلى لثبات فائق.
+• التسارع: تتسارع الفئة الرياضية (40 TFSI) من 0 إلى 100 كم/ساعة في غضون 6.7 ثانية تقريباً</p>
+        <p class="price">2,750,000 جنيه</p>
+        <a class="contact-button" href="#contact">استفسر عن السيارة</a>
+    </div>
+</article>
+
+<!-- Hyundai Tucson -->
+<article class="car-card" data-brand="هيونداي">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/2022_Hyundai_Tucson_SEL,_front_5.2.22.jpg"
+     alt="Hyundai Tucson"
+     width="100%">
+    <div class="car-info">
+        <h3>هيونداي توسان</h3>
+        <p class="car-details"></p>محرك بنزين تربو 1.6 لتر (T-GDI):• القوة: 180 حصان
+• عزم الدوران: 265 نيوتن.متر
+• ناقل الحركة: أوتوماتيكي ثنائي القابض (DCT / DSG) من 7 سرعات</p>
+        <p class="price">1,775,000 جنيه</p>
+        <a class="contact-button" href="#contact">استفسر عن السيارة</a>
+    </div>
+</article>
+<!-- Porsche 911 -->
+<div class="car-card">
+    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70"
+         alt="Porsche 911">
+
+    <h2>Porsche 911</h2>
+    </p> المحرك: 6 سلندر بوكسر (Flat-6) سعة 3.0 لتر مزود بشاحن هواء مزدوج (توين تيربو).
+• القوة: تبدأ من حوالي 385 إلى 388 حصان (وتصل إلى 532 حصان في فئات GTS المدمجة بنظام هجين T-Hybrid، وحتى 711 حصان في فئة توربو إس الجديدة).
+• عزم الدوران: يتراوح من 450 إلى 800 نيوتن متر حسب الفئة.
+• ناقل الحركة: أوتوماتيكي مزدوج القابض (PDK) من 8 سرعات.
+• التسارع (من 0 إلى 100 كم/س): يتراوح بين 2.5 ثانية إلى 4.2 ثانية حسب قوة الفئة.
+• السرعة القصوى: تصل إلى نحو 320 - 340 كم/س</p>
+    <p class="price">25,500,000 جنيه</p>
+
+    <a class="contact-button" href="#contact">استفسر عن السيارة</a>
+</div>
+
+<!-- BMW M4 -->
+<div class="car-card">
+    <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e"
+         alt="BMW M4">
+
+    <h2>BMW M4</h2>
+    </pM4> العادية (دفع خلفي):• القوة: 473 حصاناً
+• عزم الدوران: 550 نيوتن/متر (أو 406 رطل/قدم)
+• ناقل الحركة: يدوي 6 سرعات
+• التسارع (0-100 كم/س): 3.8 - 4.2 ثانية تقريباً</p>
+    <p class="price">10,700,000</p>
+
+    <a class="contact-button"href="#contact">استفسر عن السياره</a>
+</div>
+            <p class="no-results" id="noResults">
+                مفيش سيارات مطابقة للبحث.
+            </p>
+
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h2>MOODY GROUP</h2>
+
+        <p>اختيارك الصح لعربيتك الجاية 💙</p>
+
+    </p>التواصل:01061564123</p>
+
+        <p>© 2026 MOODY GROUP - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+        function searchCars() {
+            const searchText = document
+                .getElementById("searchInput")
+                .value
+                .trim()
+                .toLowerCase();
+
+            const selectedBrand = document
+                .getElementById("brandFilter")
+                .value;
+
+            const cars = document.querySelectorAll(".car-card");
+
+            let visibleCount = 0;
+
+            cars.forEach(function(car) {
+                const carName = car
+                    .querySelector("h3")
+                    .textContent
+                    .toLowerCase();
+
+                const carBrand = car.dataset.brand;
+
+                const matchesText = carName.includes(searchText);
+
+                const matchesBrand =
+                    selectedBrand === "" ||
+                    carBrand === selectedBrand;
+
+                if (matchesText && matchesBrand) {
+                    car.style.display = "block";
+                    visibleCount++;
+                } else {
+                    car.style.display = "none";
+                }
+            });
+
+            document.getElementById("noResults").style.display =
+                visibleCount === 0 ? "block" : "none";
+        }
+
+        document
+            .getElementById("searchInput")
+            .addEventListener("input", searchCars);
+
+        document
+            .getElementById("brandFilter")
+            .addEventListener("change", searchCars);
+    </script>
+
+</body>
+</html>
